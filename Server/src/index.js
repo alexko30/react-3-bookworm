@@ -2,13 +2,16 @@ import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import Promise from 'bluebird'
 
 import auth from './routes/auth';
 
-
+dotenv.config();
 const app = express();
 app.use(bodyParser.json());
-mongoose.connect('mongodb://localhost/bookworm');
+mongoose.Promise = Promise;
+mongoose.connect(process.env.MONGODB_URL);
 
 app.use('/api/auth', auth);
 

@@ -57,6 +57,7 @@ class LoginForm extends React.Component {
 						<p>{errors.global}</p>
 					</Message>
 				)}
+
 				<Form.Field error={!!errors.email}>
 					<label htmlFor="email">Email</label>
 					<input
